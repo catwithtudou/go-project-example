@@ -1,7 +1,7 @@
 // Code generated for package config by go-bindata DO NOT EDIT. (@generated)
 // sources:
 // config.yaml
-package config
+package configs
 
 import (
 	"bytes"
