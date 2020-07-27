@@ -2,14 +2,18 @@ package main
 
 import (
 	"flag"
+	"github.com/gin-gonic/gin"
 	"go-project-example/blog-service/global"
 	"go-project-example/blog-service/internal/model"
 	"go-project-example/blog-service/internal/routers"
+	"go-project-example/blog-service/pkg/logger"
 	"go-project-example/blog-service/pkg/setting"
 	"log"
 	"net/http"
 	"strings"
 	"time"
+	"gopkg.in/natefinch/lumberjack.v2"
+
 )
 
 /**
@@ -17,14 +21,26 @@ import (
  *@Date 2020/7/26
  **/
 func init(){
-	err:=setupFlag()
+	err := setupFlag()
+	if err != nil {
+		log.Fatalf("init.setupFlag err: %v", err)
+	}
 	err = setupSetting()
 	if err != nil {
 		log.Fatalf("init.setupSetting err: %v", err)
 	}
+	err = setupLogger()
+	if err != nil {
+		log.Fatalf("init.setupLogger err: %v", err)
+	}
+	err = setupDBEngine()
+	if err != nil {
+		log.Fatalf("init.setupDBEngine err: %v", err)
+	}
 }
 
 func main(){
+	gin.SetMode(global.ServerSetting.RunMode)
 	router:=routers.NewRouter()
 	s:=&http.Server{
 		Addr:              ":"+global.ServerSetting.HttpPort,
@@ -93,7 +109,19 @@ func setupSetting()error{
 	return nil
 }
 
-func setDBEngine()(err error){
+func setupDBEngine()(err error){
 	global.DBEngine,err =model.NewDBEngine(global.DatabaseSetting)
 	return
+}
+
+func setupLogger() error {
+	fileName := global.AppSetting.LogSavePath + "/" + global.AppSetting.LogFileName + global.AppSetting.LogFileExt
+	global.Logger = logger.NewLogger(&lumberjack.Logger{
+		Filename:  fileName,
+		MaxSize:   500,
+		MaxAge:    10,
+		LocalTime: true,
+	}, "", log.LstdFlags).WithCaller(2)
+
+	return nil
 }

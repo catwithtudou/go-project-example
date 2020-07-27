@@ -1,6 +1,9 @@
 package global
 
-import "go-project-example/blog-service/pkg/setting"
+import (
+	"go-project-example/blog-service/pkg/logger"
+	"go-project-example/blog-service/pkg/setting"
+)
 
 /**
  *@Author tudou
@@ -14,4 +17,6 @@ var (
 	EmailSetting    *setting.EmailSettingS
 	JWTSetting      *setting.JWTSettingS
 	DatabaseSetting *setting.DatabaseSettingS
+	Logger          *logger.Logger
+
 )

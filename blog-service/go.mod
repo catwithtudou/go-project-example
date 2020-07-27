@@ -10,4 +10,5 @@ require (
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/smacker/opentracing-gorm v0.0.0-20181207094635-cd4974441042 // indirect
 	github.com/spf13/viper v1.7.0
+	gopkg.in/natefinch/lumberjack.v2 v2.0.0
 )
