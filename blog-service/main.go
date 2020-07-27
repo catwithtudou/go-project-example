@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"go-project-example/blog-service/global"
+	"go-project-example/blog-service/internal/model"
 	"go-project-example/blog-service/internal/routers"
 	"go-project-example/blog-service/pkg/setting"
 	"log"
@@ -90,4 +91,9 @@ func setupSetting()error{
 	}
 
 	return nil
+}
+
+func setDBEngine()(err error){
+	global.DBEngine,err =model.NewDBEngine(global.DatabaseSetting)
+	return
 }
