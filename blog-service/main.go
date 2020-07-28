@@ -3,11 +3,13 @@ package main
 import (
 	"flag"
 	"github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin/binding"
 	"go-project-example/blog-service/global"
 	"go-project-example/blog-service/internal/model"
 	"go-project-example/blog-service/internal/routers"
 	"go-project-example/blog-service/pkg/logger"
 	"go-project-example/blog-service/pkg/setting"
+	"go-project-example/blog-service/pkg/validator"
 
 	"gopkg.in/natefinch/lumberjack.v2"
 	"log"
@@ -36,6 +38,10 @@ func init(){
 	err = setupDBEngine()
 	if err != nil {
 		log.Fatalf("init.setupDBEngine err: %v", err)
+	}
+	err = setupValidator()
+	if err != nil {
+		log.Fatalf("init.setupValidator err: %v", err)
 	}
 }
 
@@ -127,6 +133,14 @@ func setupLogger() error {
 		MaxAge:    10,
 		LocalTime: true,
 	}, "", log.LstdFlags).WithCaller(2)
+
+	return nil
+}
+
+func setupValidator() error {
+	global.Validator = validator.NewCustomValidator()
+	global.Validator.Engine()
+	binding.Validator = global.Validator
 
 	return nil
 }
