@@ -1,5 +1,7 @@
 package model
 
+import "go-project-example/blog-service/pkg/app"
+
 /**
  *@Author tudou
  *@Date 2020/7/26
@@ -18,3 +20,7 @@ func (a *Tag) TableName() string{
 	return "blog_tag"
 }
 
+type TagSwagger struct {
+	List  []*Tag
+	Pager *app.Pager
+}

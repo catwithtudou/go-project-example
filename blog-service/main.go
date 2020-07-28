@@ -8,12 +8,12 @@ import (
 	"go-project-example/blog-service/internal/routers"
 	"go-project-example/blog-service/pkg/logger"
 	"go-project-example/blog-service/pkg/setting"
+
+	"gopkg.in/natefinch/lumberjack.v2"
 	"log"
 	"net/http"
 	"strings"
 	"time"
-	"gopkg.in/natefinch/lumberjack.v2"
-
 )
 
 /**
@@ -39,6 +39,10 @@ func init(){
 	}
 }
 
+
+// @title 博客系统
+// @version 1.0
+// @description Chapter2
 func main(){
 	gin.SetMode(global.ServerSetting.RunMode)
 	router:=routers.NewRouter()
@@ -49,6 +53,7 @@ func main(){
 		WriteTimeout:      global.ServerSetting.WriteTimeout,
 		MaxHeaderBytes:    1 << 20,
 	}
+
 	_ = s.ListenAndServe()
 }
 

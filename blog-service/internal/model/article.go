@@ -1,5 +1,7 @@
 package model
 
+import "go-project-example/blog-service/pkg/app"
+
 /**
  *@Author tudou
  *@Date 2020/7/26
@@ -13,6 +15,11 @@ type Article struct{
 	Content       string `json:"content"`
 	CoverImageUrl string `json:"cover_image_url"`
 	State         uint8  `json:"state"`
+}
+
+type ArticleSwagger struct {
+	List  []*Article
+	Pager *app.Pager
 }
 
 

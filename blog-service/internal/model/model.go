@@ -2,10 +2,11 @@ package model
 
 import (
 	"fmt"
+	otgorm "github.com/eddycjy/opentracing-gorm"
 	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"go-project-example/blog-service/global"
 	"go-project-example/blog-service/pkg/setting"
-	otgorm "github.com/eddycjy/opentracing-gorm"
 	"time"
 )
 
