@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"io"
 	"log"
 	"runtime"
@@ -119,13 +118,14 @@ func (l *Logger)WithCallersFrames()*Logger{
 
 //设置追踪栈
 func (l *Logger) WithTrace() *Logger {
-	ginCtx, ok := l.ctx.(*gin.Context)
-	if ok {
-		return l.WithFields(Fields{
-			"trace_id": ginCtx.MustGet("X-Trace-ID"),
-			"span_id":  ginCtx.MustGet("X-Span-ID"),
-		})
-	}
+	//ginCtx, ok := l.ctx.(*gin.Context)
+	//if ok {
+	//	return l.WithFields(Fields{
+	//		"trace_id": ginCtx.MustGet("X-Trace-ID"),
+	//		"span_id":  ginCtx.MustGet("X-Span-ID"),
+	//	})
+	//}
+	//return l
 	return l
 }
 

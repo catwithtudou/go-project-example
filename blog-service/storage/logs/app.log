@@ -1,0 +1,1 @@
+2020/07/28 21:00:45 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"error","message":"app.BindAndValid errs: CreatedBy为必填字段","time":1595941245802531600}
