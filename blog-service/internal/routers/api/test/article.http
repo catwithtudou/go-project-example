@@ -1,0 +1,17 @@
+GET http://localhost:8000/api/v1/articles/1
+Accept: application/json
+
+###
+PUT http://localhost:8000/api/v1/articles/1
+Content-Type: application/x-www-form-urlencoded
+
+tag_id=2&title=一直不是阵雨&desc=一直不是阵雨&cover_image_url=http://img.zhengyua.cn/img/redrock.jpg&content=一直是阵雨&created_by=土豆&state=1&modified_by=土豆
+
+
+###
+POST http://localhost:8000/api/v1/articles
+Content-Type: application/x-www-form-urlencoded
+
+tag_id=2&title=一直是阵雨&desc=一直是阵雨&cover_image_url=http://img.zhengyua.cn/img/redrock.jpg&content=一直是阵雨&created_by=土豆&state=1
+
+###

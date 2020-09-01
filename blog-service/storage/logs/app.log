@@ -11,3 +11,7 @@
 2020/09/01 20:15:14 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"info","message":"app.BindAndValid errs: CreatedBy为必填字段","time":1598962514752933900}
 2020/09/01 20:20:37 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"error","message":"app.BindAndValid errs: CreatedBy为必填字段","time":1598962837003310100}
 2020/09/01 20:25:48 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"error","message":"app.BindAndValid errs: ModifiedBy为必填字段","time":1598963148695407300}
+2020/09/01 21:11:06 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"error","message":"app.BindAndValid errs: ID为必填字段","time":1598965866874400900}
+2020/09/01 21:16:54 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"error","message":"app.BindAndValid errs: Content长度必须至少为2个字符,CoverImageUrl必须是一个有效的URL,ModifiedBy为必填字段","time":1598966214229258400}
+2020/09/01 21:17:21 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"error","message":"app.BindAndValid errs: ModifiedBy为必填字段","time":1598966241411675800}
+2020/09/01 21:18:10 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"error","message":"app.BindAndValid errs: TagID为必填字段,Desc长度必须至少为2个字符,Content长度必须至少为2个字符,CoverImageUrl必须是一个有效的URL","time":1598966290752610100}
