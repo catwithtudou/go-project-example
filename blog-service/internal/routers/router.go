@@ -5,8 +5,11 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 	_ "go-project-example/blog-service/docs"
+	"go-project-example/blog-service/global"
 	"go-project-example/blog-service/internal/middleware"
+	"go-project-example/blog-service/internal/routers/api"
 	v1 "go-project-example/blog-service/internal/routers/api/v1"
+	"net/http"
 )
 
 /**
@@ -14,19 +17,21 @@ import (
  *@Date 2020/7/26
  **/
 
-
-
-func NewRouter() *gin.Engine{
-	r:= gin.New()
+func NewRouter() *gin.Engine {
+	r := gin.New()
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 	r.Use(middleware.Translations())
 
+	upload := api.NewUpload()
+	r.StaticFS("/static", http.Dir(global.AppSetting.UploadSavePath))
+	r.POST("/upload/file", upload.UploadFile)
 
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	article:=v1.NewArticle()
-	tag:=v1.NewTag()
-	apiV1:=r.Group("/api/v1")
+
+	article := v1.NewArticle()
+	tag := v1.NewTag()
+	apiV1 := r.Group("/api/v1")
 	{
 		// 创建标签
 		apiV1.POST("/tags", tag.Create)
