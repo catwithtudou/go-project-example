@@ -91,7 +91,7 @@ func (t Tag) Create(c *gin.Context) {
 		return
 	}
 
-	response.ToResponse(nil)
+	response.ToSuccessResponse()
 	return
 }
 
@@ -123,7 +123,7 @@ func (t Tag) Update(c *gin.Context) {
 		return
 	}
 
-	response.ToResponse(nil)
+	response.ToSuccessResponse()
 	return
 }
 
@@ -152,6 +152,6 @@ func (t Tag) Delete(c *gin.Context) {
 		return
 	}
 
-	response.ToResponse(nil)
+	response.ToSuccessResponse()
 	return
 }
