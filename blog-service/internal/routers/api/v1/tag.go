@@ -14,16 +14,14 @@ import (
  *@Date 2020/7/26
  **/
 
-type Tag struct{
-
+type Tag struct {
 }
 
-func NewTag() Tag{
+func NewTag() Tag {
 	return Tag{}
 }
 
-
-func(t Tag)Get(c *gin.Context){}
+func (t Tag) Get(c *gin.Context) {}
 
 // @Summary 获取多个标签
 // @Produce  json
@@ -35,7 +33,7 @@ func(t Tag)Get(c *gin.Context){}
 // @Failure 400 {object} errcode.Error "请求错误"
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/tags [get]
-func(t Tag)List(c *gin.Context){
+func (t Tag) List(c *gin.Context) {
 	param := service.TagListRequest{}
 	//请求返回处理
 	response := app.NewResponse(c)
@@ -48,13 +46,13 @@ func(t Tag)List(c *gin.Context){
 	}
 
 	svc := service.New(c.Request.Context())
-	pager := app.Pager{Page: app.GetPage(c), PageSize: app.GetPageSize(c)}
 	totalRows, err := svc.CountTag(&service.CountTagRequest{Name: param.Name, State: param.State})
 	if err != nil {
 		global.Logger.Errorf(c, "svc.CountTag err: %v", err)
 		response.ToErrorResponse(errcode.ErrorCountTagFail)
 		return
 	}
+	pager := app.Pager{Page: app.GetPage(c), PageSize: app.GetPageSize(c)}
 	tags, err := svc.GetTagList(&param, &pager)
 	if err != nil {
 		global.Logger.Errorf(c, "svc.GetTagList err: %v", err)
@@ -75,7 +73,7 @@ func(t Tag)List(c *gin.Context){
 // @Failure 400 {object} errcode.Error "请求错误"
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/tags [post]
-func(t Tag)Create(c *gin.Context){
+func (t Tag) Create(c *gin.Context) {
 	param := service.CreateTagRequest{}
 	response := app.NewResponse(c)
 	valid, errs := app.BindAndValid(c, &param)
@@ -93,7 +91,7 @@ func(t Tag)Create(c *gin.Context){
 		return
 	}
 
-	response.ToResponse(gin.H{})
+	response.ToResponse(nil)
 	return
 }
 
@@ -107,7 +105,7 @@ func(t Tag)Create(c *gin.Context){
 // @Failure 400 {object} errcode.Error "请求错误"
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/tags/{id} [put]
-func(t Tag)Update(c *gin.Context){
+func (t Tag) Update(c *gin.Context) {
 	param := service.UpdateTagRequest{ID: convert.StrTo(c.Param("id")).MustUInt32()}
 	response := app.NewResponse(c)
 	valid, errs := app.BindAndValid(c, &param)
@@ -125,7 +123,7 @@ func(t Tag)Update(c *gin.Context){
 		return
 	}
 
-	response.ToResponse(gin.H{})
+	response.ToResponse(nil)
 	return
 }
 
@@ -136,7 +134,7 @@ func(t Tag)Update(c *gin.Context){
 // @Failure 400 {object} errcode.Error "请求错误"
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/tags/{id} [delete]
-func(t Tag)Delete(c *gin.Context){
+func (t Tag) Delete(c *gin.Context) {
 	param := service.DeleteTagRequest{ID: convert.StrTo(c.Param("id")).MustUInt32()}
 	response := app.NewResponse(c)
 	valid, errs := app.BindAndValid(c, &param)
@@ -154,6 +152,6 @@ func(t Tag)Delete(c *gin.Context){
 		return
 	}
 
-	response.ToResponse(gin.H{})
+	response.ToResponse(nil)
 	return
 }

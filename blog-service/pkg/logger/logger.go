@@ -15,12 +15,11 @@ import (
  *@Date 2020/7/27
  **/
 
-
 type Level int8
 
 type Fields map[string]interface{}
 
-const(
+const (
 	LevelDebug Level = iota
 	LevelInfo
 	LevelWarn
@@ -29,8 +28,7 @@ const(
 	LevelPanic
 )
 
-
-func(l Level)String()string{
+func (l Level) String() string {
 	switch l {
 	case LevelDebug:
 		return "debug"
@@ -48,15 +46,15 @@ func(l Level)String()string{
 	return ""
 }
 
-type Logger struct{
+type Logger struct {
 	newLogger *log.Logger
-	ctx context.Context
-	fields Fields
+	ctx       context.Context
+	fields    Fields
 	callers   []string
 }
 
-func NewLogger(w io.Writer,prefix string,flag int)*Logger{
-	l := log.New(w,prefix,flag)
+func NewLogger(w io.Writer, prefix string, flag int) *Logger {
+	l := log.New(w, prefix, flag)
 	return &Logger{newLogger: l}
 }
 
@@ -66,13 +64,13 @@ func (l *Logger) clone() *Logger {
 }
 
 //设置日志公共字段
-func (l *Logger)WithFields(f Fields)*Logger{
-	ll:=l.clone()
-	if ll.fields==nil{
-		ll.fields=make(Fields)
+func (l *Logger) WithFields(f Fields) *Logger {
+	ll := l.clone()
+	if ll.fields == nil {
+		ll.fields = make(Fields)
 	}
-	for k,v:=range f{
-		ll.fields[k]=v
+	for k, v := range f {
+		ll.fields[k] = v
 	}
 	return ll
 }
@@ -97,22 +95,22 @@ func (l *Logger) WithCaller(skip int) *Logger {
 }
 
 //设置当前的整个调用栈信息
-func (l *Logger)WithCallersFrames()*Logger{
-	maxCallerDepth:=25
-	minCallerDepth:=1
-	callers:=[]string{}
-	pcs:=make([]uintptr,maxCallerDepth)
-	depth:=runtime.Callers(minCallerDepth,pcs)
-	frames:=runtime.CallersFrames(pcs[:depth])
-	for frame,more:=frames.Next();more;frame,more = frames.Next(){
-		s:=fmt.Sprintf("%s: %d %s", frame.File, frame.Line, frame.Function)
-		callers = append(callers,s)
-		if !more{
+func (l *Logger) WithCallersFrames() *Logger {
+	maxCallerDepth := 25
+	minCallerDepth := 1
+	callers := []string{}
+	pcs := make([]uintptr, maxCallerDepth)
+	depth := runtime.Callers(minCallerDepth, pcs)
+	frames := runtime.CallersFrames(pcs[:depth])
+	for frame, more := frames.Next(); more; frame, more = frames.Next() {
+		s := fmt.Sprintf("%s: %d %s", frame.File, frame.Line, frame.Function)
+		callers = append(callers, s)
+		if !more {
 			break
 		}
 	}
-	ll:=l.clone()
-	ll.callers=callers
+	ll := l.clone()
+	ll.callers = callers
 	return ll
 }
 
@@ -152,16 +150,22 @@ func (l *Logger) Output(level Level, message string) {
 	switch level {
 	case LevelDebug:
 		l.newLogger.Print(content)
+		log.Print(content)
 	case LevelInfo:
 		l.newLogger.Print(content)
+		log.Print(content)
 	case LevelWarn:
 		l.newLogger.Print(content)
+		log.Print(content)
 	case LevelError:
 		l.newLogger.Print(content)
+		log.Print(content)
 	case LevelFatal:
 		l.newLogger.Fatal(content)
+		log.Print(content)
 	case LevelPanic:
 		l.newLogger.Panic(content)
+		log.Print(content)
 	}
 }
 

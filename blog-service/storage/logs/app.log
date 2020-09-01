@@ -1,1 +1,13 @@
 2020/07/28 21:00:45 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"error","message":"app.BindAndValid errs: CreatedBy为必填字段","time":1595941245802531600}
+2020/09/01 20:04:52 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"error","message":"app.BindAndValid errs: CreatedBy为必填字段","time":1598961892410626700}
+2020/09/01 20:05:14 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"error","message":"app.BindAndValid errs: CreatedBy为必填字段","time":1598961914395497900}
+2020/09/01 20:06:05 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"error","message":"app.BindAndValid errs: CreatedBy为必填字段","time":1598961965211076400}
+2020/09/01 20:07:15 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"error","message":"app.BindAndValid errs: CreatedBy为必填字段","time":1598962035196588900}
+2020/09/01 20:07:51 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"error","message":"app.BindAndValid errs: CreatedBy为必填字段","time":1598962071836191700}
+2020/09/01 20:08:39 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"error","message":"app.BindAndValid errs: CreatedBy为必填字段","time":1598962119976465700}
+2020/09/01 20:10:32 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"error","message":"app.BindAndValid errs: CreatedBy为必填字段","time":1598962232482708000}
+2020/09/01 20:13:16 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"error","message":"app.BindAndValid errs: CreatedBy为必填字段","time":1598962396655081600}
+2020/09/01 20:15:14 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"error","message":"app.BindAndValid errs: CreatedBy为必填字段","time":1598962514751933900}
+2020/09/01 20:15:14 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"info","message":"app.BindAndValid errs: CreatedBy为必填字段","time":1598962514752933900}
+2020/09/01 20:20:37 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"error","message":"app.BindAndValid errs: CreatedBy为必填字段","time":1598962837003310100}
+2020/09/01 20:25:48 {"callers":["C:/code/go/src/go-project-example/blog-service/main.go: 34 main.init.0"],"level":"error","message":"app.BindAndValid errs: ModifiedBy为必填字段","time":1598963148695407300}

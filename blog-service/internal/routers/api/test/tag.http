@@ -1,0 +1,20 @@
+DELETE http://localhost:8000/api/v1/tags/1
+
+###
+PUT http://localhost:8000/api/v1/tags/1
+Content-Type: application/x-www-form-urlencoded
+
+state=0&modified_by=土豆
+
+###
+GET http://localhost:8000/api/v1/tags?name=土豆&state=1&page=1&page_size=10
+Accept: application/json
+
+###
+POST http://localhost:8000/api/v1/tags
+Content-Type: application/x-www-form-urlencoded
+
+name=土豆&state=1&created_by=阵雨
+
+###
+
